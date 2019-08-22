@@ -29,10 +29,16 @@
 # Sample output:
 # 4
 
+# Store filename passed to script.
 $workflow_file = $args[0]
 
-$count = (Get-Content "$workflow_file" | Select-String -Pattern '; id=&quot;' -AllMatches).matches.count
+# Store pattern matches to find activities.
+$pattern = "; id=&quot;"
 
+# Calculate total occurrences of "pattern" in the specified WorkFlow XML file.
+$count = (Get-Content "$workflow_file" | Select-String -Pattern $pattern -AllMatches).matches.count
+
+# Display results.
 Write-Host "Total activities: $count" -nonewline
 
 # Uncomment the next line if using the shortcut method on Windows to ensure command prompt doesn't disappear after this script has
