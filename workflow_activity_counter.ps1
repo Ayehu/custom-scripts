@@ -20,6 +20,7 @@
 # If utilizing either of these shortcut methods, simply uncomment the last line of this script.
 #
 # Sample output:
+#    WorkFlow file: C:\SSH - Linux System Administration\SSH - Linux - Service Status.xml
 # Total activities: 4
 #
 # Alternatively, the following single command will print an integer representing the total number of activities found in the
