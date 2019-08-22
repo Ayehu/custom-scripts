@@ -24,9 +24,9 @@
 # If utilizing either of these shortcut methods, simply uncomment the last line of this script.
 #
 # Sample output:
-# WorkFlow file:	C:\SSH - Linux System Administration\SSH - Linux - Service Status.xml
-# WorkFlow name:	SSH - Linux - Service Status
-# Total activities:	4
+#    WorkFlow file: C:\SSH - Linux System Administration\SSH - Linux - Service Status.xml
+#    WorkFlow name: SSH - Linux - Service Status
+# Total activities: 4
 
 # Our modules.
 use strict;
