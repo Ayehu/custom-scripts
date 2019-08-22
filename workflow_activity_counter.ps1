@@ -4,8 +4,8 @@
 # Derek Pascarella <derekp@ayehu.com>
 # Ayehu, Inc.
 #
-# PowerShell implementation of the Perl script "workflow_activity_counter.pl".  This version only prints the total activity count. At the
-# PowerShell prompt, this script is executed as follows:
+# PowerShell implementation of the Perl script "workflow_activity_counter.pl".  At the # PowerShell prompt, this script is executed as
+# follows:
 # > C:\full\path\to\workflow_activity_counter.ps1 C:\full\path\to\WorkFlow.xml
 #
 # For Windows users, note that a shortcut can be created with the path "powershell -file C:\full\path\to\workflow_activity_counter.ps1",
@@ -39,6 +39,7 @@ $pattern = "; id=&quot;"
 $count = (Get-Content "$workflow_file" | Select-String -Pattern $pattern -AllMatches).matches.count
 
 # Display results.
+Write-Host "   WorkFlow file: $workflow_file"
 Write-Host "Total activities: $count" -nonewline
 
 # Uncomment the next line if using the shortcut method on Windows to ensure command prompt doesn't disappear after this script has
