@@ -7,8 +7,8 @@
 # Ayehu, Inc.
 #
 # Display details of all activities in a given Workflow XML file, including the Workflow name, total number of activities, name of
-# each activity and its type, as well as a list of any given a duplicate name erroneously, which can occur during migration from
-# EyeShare.
+# each activity and its type, as well as a list of activities that were given a duplicate name erroneously, which can occur during
+# migration from EyeShare.
 #
 # The full file path should be passed to this script as an argument.
 #
