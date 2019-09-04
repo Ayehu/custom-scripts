@@ -6,7 +6,7 @@
 # Derek Pascarella <derekp@ayehu.com>
 # Ayehu, Inc.
 #
-# Display details of all activities in a given WorkFlow XML file, including the Workflow name, total number of activities, name of
+# Display details of all activities in a given Workflow XML file, including the Workflow name, total number of activities, name of
 # each activity and its type, as well as a list of any given a duplicate name erroneously, which can occur during migration from
 # EyeShare.
 #
@@ -14,22 +14,22 @@
 #
 # This script can be executed on Windows using the Strawberry Perl distribution (http://strawberryperl.com/) and executed at the
 # Windows command prompt as follows:
-# > perl C:\full\path\to\workflow_activity_details.pl C:\full\path\to\WorkFlow.xml
+# > perl C:\full\path\to\workflow_activity_details.pl C:\full\path\to\Workflow.xml
 #
 # For Windows users, note that a shortcut can be created with the path "perl C:\full\path\to\workflow_activity_details.pl", after which
-# WorkFlow XML files can be dragged from the file explorer directly onto the shortcut.  This would launch a command prompt window and
+# Workflow XML files can be dragged from the file explorer directly onto the shortcut.  This would launch a command prompt window and
 # display the activity count results.
 #
 # Windows users may also create a shortcut in their local "SendTo" folder (foud at "C:\Users\<user>\AppData\Roaming\Microsoft\Windows
 # \SendTo") which contains a target path of "perl C:\full\path\to\workflow_activity_details.pl".  Once created, one can right-click
-# on a WorkFlow XML file, navigate to the "Send To" menu and select the newly created shortcut.  This would launch a command prompt
+# on a Workflow XML file, navigate to the "Send To" menu and select the newly created shortcut.  This would launch a command prompt
 # window and display the activity count results.
 #
 # If utilizing either of these shortcut methods, simply uncomment the last line of this script.
 #
 # Sample output:
-# WorkFlow file: C:\Some\Folder\My Example Workflow.xml
-# WorkFlow name: My Example Workflow
+# Workflow file: C:\Some\Folder\My Example Workflow.xml
+# Workflow name: My Example Workflow
 #
 # Total activities: 5
 # cmd_list_proc (SendSSHCommand)
@@ -60,10 +60,10 @@ my %activities;
 my %activities_type;
 my $i;
 
-# Open WorkFlow XML file or print error if not found.
+# Open Workflow XML file or print error if not found.
 open(FH, '<', $workflow_file) or die $!;
 
-# Iterate through each line of the file until the WorkFlow XML is found.
+# Iterate through each line of the file until the Workflow XML is found.
 while(<FH>)
 {
 	if(grep/\<WorkflowInfo/, $_)
@@ -73,7 +73,10 @@ while(<FH>)
 	}
 }
 
-# Extract the WorkFlow's name from the XML.
+# Close Workflow XML file.
+close(FH);
+
+# Extract the Workflow's name from the XML.
 @split_workflow_name = split(/x:Name=&quot;/, $workflow_xml);
 $workflow_name = $workflow_xml;
 $workflow_name =~ s/^[^Name=\"]*Name=\"//;
@@ -140,12 +143,12 @@ for($i = 1; $i <= $#split_activity_name; $i ++)
 	}
 }
 
-# Count the number of instances "pattern" is found in the WorkFlow XML.
+# Count the number of instances "pattern" is found in the Workflow XML.
 $activity_count_total = () = $workflow_xml =~ /; id=&quot;/gi;
 
 # Print results.
-print "WorkFlow file: $workflow_file\n";
-print "WorkFlow name: $workflow_name\n\n";
+print "Workflow file: $workflow_file\n";
+print "Workflow name: $workflow_name\n\n";
 print "Total activities: $activity_count_total\n";
 
 # Iterate through "activities" hash and print number of occurrences for each activity.
