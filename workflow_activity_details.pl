@@ -144,7 +144,7 @@ for($i = 1; $i <= $#split_activity_name; $i ++)
 }
 
 # Count the number of instances "pattern" is found in the Workflow XML.
-$activity_count_total = () = $workflow_xml =~ /; id=&quot;/gi;
+$activity_count_total = (() = $workflow_xml =~ /x:Name=&quot;/gi) - 1;
 
 # Print results.
 print "Workflow file: $workflow_file\n";
