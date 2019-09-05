@@ -33,7 +33,6 @@ use strict;
 
 # Our variables.
 my $count = 0;
-my $pattern = "x:Name=&quot;";
 my $workflow_file = $ARGV[0];
 my $workflow_xml;
 my $workflow_name;
@@ -61,7 +60,7 @@ $workflow_name =~ s/\" Description.*//;
 $workflow_name =~ s/^\s+|\s+$//g;
 
 # Count the number of instances "pattern" is found in the Workflow XML.
-$count = (() = $workflow_xml =~ /$pattern/gi) - 1;
+$count = (() = $workflow_xml =~ /x:Name=&quot;/gi) - 1;
 
 # Print results.
 print "   Workflow file: $workflow_file\n";
