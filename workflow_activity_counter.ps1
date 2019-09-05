@@ -34,10 +34,11 @@
 $workflow_file = $args[0]
 
 # Store pattern matches to find activities.
-$pattern = "; id=&quot;"
+$pattern = "x:Name=&quot;"
 
 # Calculate total occurrences of "pattern" in the specified Workflow XML file.
 $count = (Get-Content "$workflow_file" | Select-String -Pattern $pattern -AllMatches).matches.count
+$count --
 
 # Display results.
 Write-Host "   Workflow file: $workflow_file"
