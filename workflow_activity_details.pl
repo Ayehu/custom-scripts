@@ -25,7 +25,8 @@
 # on a Workflow XML file, navigate to the "Send To" menu and select the newly created shortcut.  This would launch a command prompt
 # window and display the activity count results.
 #
-# If utilizing either of these shortcut methods, simply uncomment the last line of this script.
+# If utilizing either of these shortcut methods, simply uncomment the last line of this script before the "find_activity_type"
+# subroutine.
 #
 # Sample output:
 # Workflow file: C:\Some\Folder\My Example Workflow.xml
@@ -45,7 +46,6 @@
 use strict;
 
 # Our variables.
-my $i;
 my $workflow_file = $ARGV[0];
 my $workflow_xml;
 my $workflow_name;
@@ -56,9 +56,9 @@ my $activity_name_individual;
 my $duplicates_found = 0;
 my @split_workflow_name;
 my @split_activity_name;
-my @split_activity_type;
 my %activities;
 my %activities_type;
+my $i;
 
 # Open Workflow XML file or print error if not found.
 open(FH, '<', $workflow_file) or die $!;
@@ -89,38 +89,23 @@ $workflow_name =~ s/^\s+|\s+$//g;
 # Iterate through each element of "split_activity_name".
 for($i = 1; $i <= $#split_activity_name; $i ++)
 {
-	# Parse out activity name and type.
+	# Store full activity details.
 	$activity_name = $split_activity_name[$i];
-	@split_activity_type = split(/name=&quot;/, $activity_name);
-	$activity_type = $split_activity_type[1];
-	$activity_type =~ s/\&quot\;.*//;
-	$activity_type =~ s/^\s+|\s+$//g;
 
-	# If activity type could not be parsed, keep looking.
-	if($activity_type eq "")
+	# Iterate three (3) loops to attempt to find activity type.
+	for(0 .. 2)
 	{
-		@split_activity_type = split(/TypeName=&quot;/, $activity_name);
-		$activity_type = $split_activity_type[1];
-		$activity_type =~ s/\&quot\;.*//;
-		$activity_type =~ s/^\s+|\s+$//g;
+		# Store results of the "find_activity_type" subroutine in "activity_type".
+		$activity_type = &find_activity_type($activity_name, $_);
 
-		# If activity type could not be parsed, keep looking.
-		if($activity_type eq "")
+		# Prematurely end loop if activity type is found.
+		if($activity_type ne "")
 		{
-			@split_activity_type = split(/label=&quot;/, $activity_name);
-			$activity_type = $split_activity_type[1];
-			$activity_type =~ s/\&quot\;.*//;
-			$activity_type =~ s/^\s+|\s+$//g;
+			last;
 		}
 	}
 
-	# If the activity type is still unknown, default to "ReturnValue", as this particular activity's tag order is to blame.
-	if($activity_type eq "")
-	{
-		$activity_type = "ReturnValue";
-	}
-
-	# Finish parsing out activity name and type.
+	# Parse activity name.
 	$activity_name =~ s/\&quot\;.*//;
 	$activity_name =~ s/^\s+|\s+$//g;
 
@@ -182,3 +167,39 @@ if($duplicates_found == 0)
 # Uncomment the next line if using the shortcut method on Windows to ensure command prompt doesn't disappear after this script has
 # finished executing.
 #<STDIN>;
+
+# Subroutine to find the activity type for a specified activity name.
+sub find_activity_type
+{
+	# Our variables.
+	my @split;
+	my $type;
+
+	# Parse out activity type based on number of attempts already made.
+	if($_[1] == 0)
+	{
+		@split = split(/name=&quot;/, $_[0]);
+	}
+	elsif($_[1] == 1)
+	{
+		@split = split(/TypeName=&quot;/, $_[0]);
+	}
+	elsif($_[1] == 2)
+	{
+		@split = split(/label=&quot;/, $_[0]);
+	}
+
+	# Continue to parse activity type.
+	$type = $split[1];
+	$type =~ s/\&quot\;.*//;
+	$type =~ s/^\s+|\s+$//g;
+
+	# If the activity type is still unknown, default to "ReturnValue", as this particular activity's tag order is to blame.
+	if($type eq "")
+	{
+		$type = "ReturnValue";
+	}
+
+	# Return the result.
+	return $type;
+}
