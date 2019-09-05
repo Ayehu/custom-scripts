@@ -45,6 +45,7 @@
 use strict;
 
 # Our variables.
+my $i;
 my $workflow_file = $ARGV[0];
 my $workflow_xml;
 my $workflow_name;
@@ -58,7 +59,6 @@ my @split_activity_name;
 my @split_activity_type;
 my %activities;
 my %activities_type;
-my $i;
 
 # Open Workflow XML file or print error if not found.
 open(FH, '<', $workflow_file) or die $!;
