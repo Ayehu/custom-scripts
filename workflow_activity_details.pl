@@ -6,27 +6,32 @@
 # Derek Pascarella <derekp@ayehu.com>
 # Ayehu, Inc.
 #
-# Display details of all activities in a given Workflow XML file, including the Workflow name, total number of activities, name of
-# each activity and its type, as well as a list of activities that were given a duplicate name erroneously, which can occur during
-# migration from EyeShare.
+# Display details of all activities in a given Workflow XML file, including the
+# Workflow name, total number of activities, name of each activity and its
+# type, as well as a list of activities that were given a duplicate name
+# erroneously, which can occur during migration from EyeShare.
 #
 # The full file path should be passed to this script as an argument.
 #
-# This script can be executed on Windows using the Strawberry Perl distribution (http://strawberryperl.com/) and executed at the
-# Windows command prompt as follows:
-# > perl C:\full\path\to\workflow_activity_details.pl C:\full\path\to\Workflow.xml
+# This script can be executed on Windows using the Strawberry Perl distribution
+# (http://strawberryperl.com/) and executed at the Windows command prompt as
+# follows:
+# > perl C:\folder\workflow_activity_details.pl C:\folder\Workflow.xml
 #
-# For Windows users, note that a shortcut can be created with the path "perl C:\full\path\to\workflow_activity_details.pl", after which
-# Workflow XML files can be dragged from the file explorer directly onto the shortcut.  This would launch a command prompt window and
-# display the activity count results.
+# For Windows users, note that a shortcut can be created with the path "perl
+# C:\folder\workflow_activity_details.pl", after which Workflow XML files can be
+# dragged from the file explorer directly onto the shortcut.  This would
+# launch a command prompt window and display the activity count results.
 #
-# Windows users may also create a shortcut in their local "SendTo" folder (foud at "C:\Users\<user>\AppData\Roaming\Microsoft\Windows
-# \SendTo") which contains a target path of "perl C:\full\path\to\workflow_activity_details.pl".  Once created, one can right-click
-# on a Workflow XML file, navigate to the "Send To" menu and select the newly created shortcut.  This would launch a command prompt
-# window and display the activity count results.
+# Windows users may also create a shortcut in their local "SendTo" folder
+# (foud at "C:\Users\<user>\AppData\Roaming\Microsoft\Windows\SendTo") which
+# contains a target path of "perl C:\folder\workflow_activity_details.pl".
+# Once created, one can right-click on a Workflow XML file, navigate to the
+# "Send To" menu and select the newly created shortcut.  This would launch a
+# command prompt window and display the activity count results.
 #
-# If utilizing either of these shortcut methods, simply uncomment the last line of this script before the "find_activity_type"
-# subroutine.
+# If utilizing either of these shortcut methods, simply uncomment the last line
+# of this script.
 #
 # Sample output:
 # Workflow file: C:\Some\Folder\My Example Workflow.xml
@@ -115,7 +120,8 @@ for($i = 1; $i <= $#split_activity_name; $i ++)
 		}
 	}
 
-	# If the activity type is still unknown, default to "ReturnValue", as this particular activity's tag order is to blame.
+	# If the activity type is still unknown, default to "ReturnValue", as
+	# this particular activity's tag order is to blame.
 	if($activity_type eq "")
 	{
 		$activity_type = "ReturnValue";
@@ -128,7 +134,8 @@ for($i = 1; $i <= $#split_activity_name; $i ++)
 	# Skip "CustomWorkflow", as its not actually an activity.
 	if($activity_name ne "CustomWorkflow")
 	{
-		# Increase activity count by one (1) if occurence already recorded previously.
+		# Increase activity count by one (1) if occurence already
+		# recorded previously.
 		if($activities{$activity_name} >= 1)
 		{
 			$activities{$activity_name} += $activities{$activity_name};
@@ -139,7 +146,8 @@ for($i = 1; $i <= $#split_activity_name; $i ++)
 			$activities{$activity_name} = 1;
 		}
 
-		# Store "activity_type" as a value for the "activity_name" key in the "activities_type" hash.
+		# Store "activity_type" as a value for the "activity_name" key
+		# in the "activities_type" hash.
 		$activities_type{$activity_name} = $activity_type;
 	}
 }
@@ -152,7 +160,8 @@ print "Workflow file: $workflow_file\n";
 print "Workflow name: $workflow_name\n\n";
 print "Total activities: $activity_count_total\n";
 
-# Iterate through "activities" hash and print number of occurrences for each activity.
+# Iterate through "activities" hash and print number of occurrences for each
+# activity.
 foreach $activity_name_individual (sort {lc $a cmp lc $b} keys %activities)
 {
 	print "$activity_name_individual (" . $activities_type{$activity_name_individual} . ")\n";
@@ -161,7 +170,8 @@ foreach $activity_name_individual (sort {lc $a cmp lc $b} keys %activities)
 # Continue results.
 print "\nDuplicate Activities:\n";
 
-# Iterate through "activities" hash and print number of occurrences for each activity with a duplicate name.
+# Iterate through "activities" hash and print number of occurrences for each
+# activity with a duplicate name.
 foreach $activity_name_individual (keys %activities)
 {
 	if($activities{$activity_name_individual} > 1)
@@ -180,6 +190,6 @@ if($duplicates_found == 0)
 	print "<NONE>\n";
 }
 
-# Uncomment the next line if using the shortcut method on Windows to ensure command prompt doesn't disappear after this script has
-# finished executing.
+# Uncomment the next line if using the shortcut method on Windows to ensure
+# command prompt doesn't disappear after this script has finished executing.
 #<STDIN>;
