@@ -86,7 +86,7 @@ my $http = HTTP::Tiny->new;
 my $response = $http->post($url => {
 	content => $data,
 	headers => {'Content-Type' => 'application/json'}
-	});
+});
 
 # Display successful results.
 if($response->{'success'} == 1)
