@@ -14,8 +14,8 @@
 #
 # The only requirements are the "JSON" and "HTTP::Tiny" Perl libraries.  This
 # script can also be used on Windows using the Strawberry Perl distribution
-# (http://strawberryperl.com/) and executed at the Windows command prompt as
-# follows:
+# (http://strawberryperl.com/), which already ships with the required
+# libraries, and can be executed at the Windows command prompt as follows:
 # > perl C:\folder\ayehu_alert.pl "alertValue1" alertKey2 "alertValue2"
 #
 # Sample output (success):
