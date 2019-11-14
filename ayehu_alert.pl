@@ -52,6 +52,7 @@ if(scalar(@ARGV) < 2)
 
 	exit;
 }
+# If an uneven number of arguments were given, display an error.
 elsif(scalar(@ARGV) % 2 != 0)
 {
 	print "One or more key(s) have been given without a corresponding value.\n";
