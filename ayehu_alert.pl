@@ -83,10 +83,12 @@ my $data = encode_json {
 my $http = HTTP::Tiny->new;
 
 # Send POST request via "http" object.
-my $response = $http->post($url => {
-	content => $data,
-	headers => {'Content-Type' => 'application/json'}
-});
+my $response = $http->post(
+	$url => {
+		content => $data,
+		headers => { 'Content-Type' => 'application/json' }
+	}
+);
 
 # Display successful results.
 if($response->{'success'} == 1)
