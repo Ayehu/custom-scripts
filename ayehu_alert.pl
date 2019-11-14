@@ -20,8 +20,6 @@
 #
 # Sample output (success):
 # Status:         Success
-# URL:            http://localhost:8200/AyehuAPI/
-# Password:       my_secret_password
 # Session ID:     80efa8eb-320b-415d-be6d-2f7dca18a84c
 # Payload:        {"root":{"item":{"auth":"my_secret_password","name":"Derek","location":"NYC","sessionid":"0"}}}
 #
@@ -94,8 +92,6 @@ my $response = $http->post($url => {
 if($response->{'success'} == 1)
 {
 	print "Status:\t\tSuccess\n";
-	print "URL:\t\t$url\n";
-	print "Secret:\t\t$secret\n";
 	print "Session ID:\t" . decode_json($response->{'content'})->{'SessionID'} . "\n";
 	print "Payload:\t$data\n";
 }
