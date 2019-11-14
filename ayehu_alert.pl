@@ -80,7 +80,7 @@ my $data = encode_json {
 	}
 };
 
-# Create new "HTTP:Tiny" object.
+# Create new "HTTP::Tiny" object.
 my $http = HTTP::Tiny->new;
 
 # Send POST request via "http" object.
