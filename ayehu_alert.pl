@@ -73,7 +73,7 @@ my $data = encode_json {
 	root => {
 		item => {
 			auth => $secret,
-			sessionid => "0",
+			sessionid => 0,
 			%key_value
 		}
 	}
