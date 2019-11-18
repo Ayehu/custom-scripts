@@ -63,7 +63,7 @@ while(<FH>)
 {
 	# Skip blank lines and comments.
 	next if /^$/;
-	next if $_ =~ /^#/;
+	next if /^#/;
 
 	# Store each property of the host into a separate element of "host_info".
 	chomp;
