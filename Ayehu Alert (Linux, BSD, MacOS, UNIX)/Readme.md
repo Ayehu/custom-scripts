@@ -66,4 +66,7 @@ Response:	Wow Derek, you're 100 years old!
 ```
 
 For more information on building Ayehu NG workflows with WebServiceResponse activities for bi-directional communication
-between an external system and an Ayehu NG server, consult the documentation found in the Ayehu Support Portal.
+between an external system and an Ayehu NG server, consult the documentation found in the Ayehu Support Portal:
+* [Integrating with Ayehu NG Web Services](https://support.ayehu.com/hc/en-us/articles/360014152193-Integrating-with-Ayehu-NG-Web-Services)
+* [Trigger Workflows remotely via Web Service API](https://support.ayehu.com/hc/en-us/articles/360034892433-Trigger-Workflows-remotely-via-Web-Service-API)
+* [Bidirectional communication between a client and the Web Service API (WebServiceResponse)](https://support.ayehu.com/hc/en-us/articles/360037302894-Bidirectional-communication-between-a-client-and-the-Web-Service-API-WebServiceResponse-)
