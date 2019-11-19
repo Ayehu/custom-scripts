@@ -31,12 +31,11 @@
 # The response would resemble this:
 # Status:	Success
 # Session ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
-# Payload:	{"root":{"item":{"auth":"p@$$w0rd","sessionid":"0","MyFirstName":"Derek"}}}
+# Payload:	{"root":{"item":{"auth":"p@$$w0rd","sessionid":"0","FirstName":"Derek"}}}
 #
 # After receiving this message, an Ayehu NG server may be configured to trigger a workflow that contains a WebServiceResponse
 # activity containing the message "Hi %FirstName%, what's your age?" To retrieve this message, a GET request would be sent,
 # along with the session ID returned by the previous command, by executing a command like this:
-#
 # ayehu_alert --host MyAyehuServer --mode GET --sid dfe002cd-9593-4e85-830a-55a4bd8b2e0d
 #
 # The response would resemble this:
@@ -45,7 +44,6 @@
 #
 # To respond to the WebServiceResponse activity, another POST request can be sent containing the session ID and a key named
 # "message" with a response as its value. This is achieved with a command like this:
-#
 # ayehu_alert --host MyAyehuServer --mode POST --sid dfe002cd-9593-4e85-830a-55a4bd8b2e0d message 100
 #
 # The response would resemble this:
@@ -55,7 +53,6 @@
 #
 # The process of retrieving additional messages sent by the WebServiceResponse activity can continue with more GET requests
 # like this:
-#
 # ayehu_alert --host MyAyehuServer --mode GET --sid dfe002cd-9593-4e85-830a-55a4bd8b2e0d
 #
 # The response would resemble this:
