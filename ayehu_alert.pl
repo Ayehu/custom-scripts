@@ -29,9 +29,9 @@
 # ayehu_alert --host MyAyehuServer --mode POST FirstName Derek
 #
 # The response would resemble this:
-# Status:	Success
+# Status:		Success
 # Session ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
-# Payload:	{"root":{"item":{"auth":"p@$$w0rd","sessionid":"0","MyFirstName":"Derek"}}}
+# Payload:		{"root":{"item":{"auth":"p@$$w0rd","sessionid":"0","MyFirstName":"Derek"}}}
 #
 # After receiving this message, an Ayehu NG server may be configured to trigger a workflow that contains a WebServiceResponse
 # activity containing the message "Hi %FirstName%, what's your age?" To retrieve this message, a GET request would be sent,
@@ -49,9 +49,9 @@
 # ayehu_alert --host MyAyehuServer --mode POST --sid dfe002cd-9593-4e85-830a-55a4bd8b2e0d message 100
 #
 # The response would resemble this:
-# Status:	Success
+# Status:		Success
 # Session ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
-# Payload:	{"root":{"item":{"auth":"p@$$w0rd","message":"100","sessionid":"dfe002cd-9593-4e85-830a-55a4bd8b2e0d"}}}
+# Payload:		{"root":{"item":{"auth":"p@$$w0rd","message":"100","sessionid":"dfe002cd-9593-4e85-830a-55a4bd8b2e0d"}}}
 #
 # The process of retrieving additional messages sent by the WebServiceResponse activity can continue with more GET requests
 # like this:
@@ -156,6 +156,12 @@ while(<FH>)
 		# Current configuration entry matches "host" so store hash key with URL and secret.
 		if($host_info[0] eq $host)
 		{
+			# Append terminal "/" if missing from "url".
+			if(substr($host_info[1], -1) ne "/")
+			{
+				$host_info[1] .= "/";
+			}
+
 			$hosts{$host_info[0]}{url} = $host_info[1];
 			$hosts{$host_info[0]}{secret} = $host_info[2];
 		}
@@ -271,7 +277,6 @@ sub response_message
 	# The response failed.
 	else
 	{
-		# Print failed "POST" results.
 		print "Status:\tFailure\n";
 		print "Reason:\t" . $response->{'reason'} . "\n";
 	}
