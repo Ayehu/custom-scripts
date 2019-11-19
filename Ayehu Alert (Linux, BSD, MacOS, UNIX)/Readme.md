@@ -3,6 +3,12 @@
 ### Ayehu, Inc.
 ---
 
+**Requirements:**
+* Perl
+* HTTP::Tiny (Perl library)
+* JSON (Perl library)
+* Getopt::Long (Perl library)
+
 **Usage:**
 ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
 
