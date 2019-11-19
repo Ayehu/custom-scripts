@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 #
 # ayehu_alert.pl
+# Derek Pascarella <derekp@ayehu.com>
+# Ayehu, Inc.
+#
 # Usage: ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
 # Configuration: /etc/ayehu.conf
 #
@@ -61,9 +64,6 @@
 #
 # For more information on building Ayehu NG workflows with WebServiceResponse activities for bi-directional communication
 # between an external system and an Ayehu NG server, consult the documentation found in the Ayehu Support Portal.
-#
-# Derek Pascarella <derekp@ayehu.com>
-# Ayehu, Inc.
 
 # Use strict policy on syntax and data-types.
 use strict;
