@@ -10,6 +10,7 @@
 * Getopt::Long (Perl library)
 
 **Usage:**
+<br>
 `ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
 
 **Configuration:**
