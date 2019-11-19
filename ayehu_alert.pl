@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #
 # ayehu_alert.pl
-# Usage: ayehu_alert --host <LABEL> --mode <GET/POST> alertKey1 "alert value 1" alertKey2 "alert value 2"
+# Usage: ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
 #
 # Derek Pascarella <derekp@ayehu.com>
 # Ayehu, Inc.
@@ -15,21 +15,21 @@ use Getopt::Long;
 use JSON;
 
 # Define usage help.
-my $usage = "Usage: ayehu_alert --host <LABEL> --mode <GET/POST> alertKey1 \"alert value 1\" alertKey2 \"alert value 2\"\n";
+my $usage = "Usage: ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 \"alert value 1\" alertKey2 \"alert value 2\"\n";
 
 # Define location of configuration file.
 my $config_file = "/etc/ayehu.conf";
 
 # Our variables.
+my $i;
 my $url;
+my $http;
 my $secret;
+my $response;
+my $post_data;
 my %hosts;
 my %key_value;
 my @host_info;
-my $post_data;
-my $http;
-my $response;
-my $i;
 
 # Our arguments.
 my $sid = "0";
@@ -41,24 +41,40 @@ GetOptions(
 	'host=s' => \$host,
 	'mode=s' => \$mode,
 	'sid=s' => \$sid
-) or die $usage;
+);
 
 # Convert "mode" and "sid" to lowercase.
 $mode = lc($mode);
 $sid = lc($sid);
 
-# Print usage and exit if insufficient arguments are given.
-if(scalar(@ARGV) % 2 != 0 || $host eq "" || ($mode ne "post" && $mode ne "get"))
+# Print usage and exit if no host label is given.
+if($host eq "")
 {
-	print $usage;
+	&error_message("host");
+}
 
-	exit;
+# Print usage and exit if no valid HTTP mode is given.
+if($mode ne "post" && $mode ne "get")
+{
+	&error_message("mode");
+}
+
+# Print usage and exit if invalid session ID is given.
+if($sid != 0 && length($sid) != 36)
+{
+	&error_message("sid");
+}
+
+# Print usage and exit if an odd number of key-value pairs is given for a "POST" request.
+if($mode eq "post" && (scalar(@ARGV) % 2 != 0 || scalar(@ARGV) == 0))
+{
+	&error_message("keyvalue");
 }
 
 # Open configuration file.
 open(FH, '<', $config_file) or die $!;
 
-# Read and store information on each host from configuration file.
+# Read file to find settings for specified target host.
 while(<FH>)
 {
 	# Skip blank lines and comments.
@@ -72,16 +88,32 @@ while(<FH>)
 	# If three properties are present, store them in "hosts" hash.
 	if(scalar(@host_info) == 3)
 	{
-		$hosts{$host_info[0]}{url} = $host_info[1];
-		$hosts{$host_info[0]}{secret} = $host_info[2];
+		# Remove trailing and leading whitespace from each element of "host_info".
+		foreach(@host_info)
+		{
+			$_ =~ s/^\s+|\s+$//;
+		}
+
+		# Current configuration entry matches "host" so store hash key with URL and secret.
+		if($host_info[0] eq $host)
+		{
+			$hosts{$host_info[0]}{url} = $host_info[1];
+			$hosts{$host_info[0]}{secret} = $host_info[2];
+		}
 	}
 }
 
 # Close configuration file.
 close(FH);
 
+# Print usage and exit if no suitable host setting found in configuration file.
+if(keys %hosts == 0)
+{
+	&error_message("config");
+}
+
 # Add each key-value pair from arguments to "key_value" hash.
-for($i = 0; $i <= $#ARGV; $i += 2)
+for($i = 0; $i < scalar(@ARGV); $i += 2)
 {
 	$key_value{$ARGV[$i]} = $ARGV[$i + 1];
 }
@@ -92,7 +124,7 @@ $http = HTTP::Tiny->new;
 # Send "POST" request per value of "mode" parameter.
 if($mode eq "post")
 {
-	# Encode JSON payload.
+	# Build and encode JSON payload.
 	$post_data = encode_json {
 		root => {
 			item => {
@@ -110,20 +142,6 @@ if($mode eq "post")
 			headers => { 'Content-Type' => 'application/json' }
 		}
 	);
-
-	# Display successful results.
-	if($response->{'success'} == 1)
-	{
-		print "Status:\t\tSuccess\n";
-		print "Session ID:\t" . decode_json($response->{'content'})->{'SessionID'} . "\n";
-		print "Payload:\t$post_data\n";
-	}
-	# Display unsuccessful results.
-	else
-	{
-		print "Status:\tFailure\n";
-		print "Reason:\t" . $response->{'reason'} . "\n";
-	}
 }
 # Send "GET" request per value of "mode" parameter.
 elsif($mode eq "get")
@@ -136,17 +154,79 @@ elsif($mode eq "get")
 			}
 		}
 	);
+}
 
-	# Display successful results.
-	if($response->{'success'} == 1)
+# Print response results.
+&response_message($response->{'success'}, $mode);
+
+# Our "error_message" subroutine prints specific usage errors and exits.
+sub error_message
+{
+	# Exit with "keyvalue" error.
+	if($_[0] eq "keyvalue")
 	{
-		print "Status:\t\tSuccess\n";
-		print "Response:\t" . decode_json($response->{'content'})->{'Response'} . "\n";
+		print "One or more key(s) missing a value!\n";
 	}
-	# Display unsuccessful results.
+	# Exit with "host" error.
+	elsif($_[0] eq "host")
+	{
+		print "Target host missing!\n";
+	}
+	# Exit with "mode" error.
+	elsif($_[0] eq "mode")
+	{
+		print "Invalid or missing mode!\n";
+	}
+	# Exit with "sid" error.
+	elsif($_[0] eq "sid")
+	{
+		print "Invalid session ID!\n";
+	}
+	# Exit with "config" error.
+	elsif($_[0] eq "config")
+	{
+		print "No configuration found in $config_file for \"$host\".\n";
+	}
+
+	print $usage;
+
+	exit;
+}
+
+# Our "response_message" subroutine prints the response details of the request.
+sub response_message
+{
+	# The request was successful.
+	if($_[0])
+	{
+		# Print successful "POST" results.
+		if($_[1] eq "post")
+		{
+			print "Status:\t\tSuccess\n";
+			print "Session ID:\t" . decode_json($response->{'content'})->{'SessionID'} . "\n";
+			print "Payload:\t$post_data\n";
+		}
+		# Print successful "GET" results.
+		elsif($_[1] eq "get")
+		{
+			print "Status:\t\tSuccess\n";
+			print "Response:\t" . decode_json($response->{'content'})->{'Response'} . "\n";
+		}
+	}
+	# The response failed.
 	else
 	{
-		print "Status:\tFailure\n";
-		print "Reason:\t" . $response->{'reason'} . "\n";
+		# Print failed "POST" results.
+		if($_[1] eq "post")
+		{
+			print "Status:\tFailure\n";
+			print "Reason:\t" . $response->{'reason'} . "\n";
+		}
+		# Print failed "GET" results.
+		elsif($_[1] eq "get")
+		{
+			print "Status:\tFailure\n";
+			print "Reason:\t" . $response->{'reason'} . "\n";
+		}
 	}
 }
