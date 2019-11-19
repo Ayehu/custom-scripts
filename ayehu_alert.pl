@@ -106,7 +106,7 @@ $sid = lc($sid);
 # Print usage and exit if no host label is given.
 if($host eq "")
 {
-	&error_message("host");
+	&error_message("host_missing");
 }
 
 # Print usage and exit if no valid HTTP mode is given.
@@ -163,6 +163,11 @@ while(<FH>)
 			$hosts{$host_info[0]}{secret} = $host_info[2];
 		}
 	}
+	# Print usage and exit if too few or too many properties exist in configuration file for host.
+	else
+	{
+		&error_message("config_malformed");
+	}
 }
 
 # Close configuration file.
@@ -171,7 +176,7 @@ close(FH);
 # Print usage and exit if no suitable host setting found in configuration file.
 if(keys %hosts == 0)
 {
-	&error_message("config");
+	&error_message("config_missing");
 }
 
 # Add each key-value pair from arguments to "key_value" hash.
@@ -226,23 +231,27 @@ sub error_message
 {
 	if($_[0] eq "keyvalue")
 	{
-		print "One or more key(s) missing a value!\n";
+		print "One or more key(s) missing a value.\n";
 	}
-	elsif($_[0] eq "host")
+	elsif($_[0] eq "host_missing")
 	{
-		print "Target host missing!\n";
+		print "Target host missing,\n";
 	}
 	elsif($_[0] eq "mode")
 	{
-		print "Invalid or missing mode!\n";
+		print "Invalid or missing mode.\n";
 	}
 	elsif($_[0] eq "sid")
 	{
-		print "Invalid session ID!\n";
+		print "Invalid session ID.\n";
 	}
-	elsif($_[0] eq "config")
+	elsif($_[0] eq "config_missing")
 	{
 		print "No configuration found in $config_file for \"$host\".\n";
+	}
+	elsif($_[0] eq "config_malformed")
+	{
+		print "Invalid settings for \"$host\" found in $config_file.\n";
 	}
 
 	print $usage;
