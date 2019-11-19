@@ -10,10 +10,10 @@
 * Getopt::Long (Perl library)
 
 **Usage:**
-ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
+`ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
 
 **Configuration:**
-/etc/ayehu.conf
+`/etc/ayehu.conf`
 
 This utility acts as a powerful and easy-to-use abstraction layer for the Ayehu NG Web Service API. This API allows data to
 be sent to an Ayehu NG server via HTTP POST requests. The API also supports GET requests for retrieving the response from a
@@ -26,7 +26,7 @@ an external Linux/UNIX/BSD/MacOS system and an Ayehu NG server.
 If any parameter or argument is missing, invalid, or malformed, a detailed error will be returned. Should there be a
 problem sending a request, the response message will contain a reason for the failure.
 
-The first step to utilizing this tool is creating a configuration file (by default /etc/ayehu.conf). The format is as
+The first step to utilizing this tool is creating a configuration file (by default `/etc/ayehu.conf`). The format is as
 follows:
 `HostLabel|TargetURL|Secret`
 
