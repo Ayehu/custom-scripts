@@ -124,7 +124,7 @@ if($sid != 0 && length($sid) != 36)
 # Print usage and exit if an odd number of key-value pairs is given for a "POST" request.
 if($mode eq "post" && (scalar(@ARGV) % 2 != 0 || scalar(@ARGV) == 0))
 {
-	&error_message("keyvalue");
+	&error_message("key_value");
 }
 
 # Open configuration file.
@@ -229,7 +229,7 @@ elsif($mode eq "get")
 # Our "error_message" subroutine prints specific usage errors and exits.
 sub error_message
 {
-	if($_[0] eq "keyvalue")
+	if($_[0] eq "key_value")
 	{
 		print "One or more key(s) missing a value.\n";
 	}
