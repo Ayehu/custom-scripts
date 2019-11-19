@@ -38,8 +38,8 @@ To send a POST request to an Ayehu NG server, a command like this would be execu
 
 The response would resemble this:
 ```
-Status:	Success
-Session ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
+Status:	  Success
+Session   ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
 Payload:	{"root":{"item":{"auth":"p@$$w0rd","sessionid":"0","FirstName":"Derek"}}}
 ```
 
@@ -50,7 +50,7 @@ along with the session ID returned by the previous command, by executing a comma
 
 The response would resemble this:
 ```
-Status:	Success
+Status:	  Success
 Response:	Hi Derek, what's your age?
 ```
 
@@ -60,9 +60,9 @@ To respond to the WebServiceResponse activity, another POST request can be sent 
 
 The response would resemble this:
 ```
-Status:	Success
+Status:	    Success
 Session ID:	dfe002cd-9593-4e85-830a-55a4bd8b2e0d
-Payload:	{"root":{"item":{"auth":"p@$$w0rd","message":"100","sessionid":"dfe002cd-9593-4e85-830a-55a4bd8b2e0d"}}}
+Payload:	  {"root":{"item":{"auth":"p@$$w0rd","message":"100","sessionid":"dfe002cd-9593-4e85-830a-55a4bd8b2e0d"}}}
 ```
 
 The process of retrieving additional messages sent by the WebServiceResponse activity can continue with more GET requests
@@ -71,7 +71,7 @@ like this:
 
 The response would resemble this:
 ```
-Status:	Success
+Status:	  Success
 Response:	Wow Derek, you're 100 years old!
 ```
 
