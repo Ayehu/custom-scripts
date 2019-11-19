@@ -15,8 +15,8 @@
 # to an Ayehu NG server, freeing up valuable time and allowing users to begin quickly and effectively communicating between
 # an external Linux/UNIX/BSD/MacOS system and an Ayehu NG server.
 #
-# If any parameter or argument is missing, invalid, or malformed, a detailed error will be returned detailing those errors.
-# Should there be a problem sending a request, the response message will contain a reason for the failure.
+# If any parameter or argument is missing, invalid, or malformed, a detailed error will be returned. Should there be a
+# problem sending a request, the response message will contain a reason for the failure.
 #
 # The first step to utilizing this tool is creating a configuration file (by default /etc/ayehu.conf). The format is as
 # follows:
