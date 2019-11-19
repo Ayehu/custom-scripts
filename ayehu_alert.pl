@@ -162,27 +162,22 @@ elsif($mode eq "get")
 # Our "error_message" subroutine prints specific usage errors and exits.
 sub error_message
 {
-	# Exit with "keyvalue" error.
 	if($_[0] eq "keyvalue")
 	{
 		print "One or more key(s) missing a value!\n";
 	}
-	# Exit with "host" error.
 	elsif($_[0] eq "host")
 	{
 		print "Target host missing!\n";
 	}
-	# Exit with "mode" error.
 	elsif($_[0] eq "mode")
 	{
 		print "Invalid or missing mode!\n";
 	}
-	# Exit with "sid" error.
 	elsif($_[0] eq "sid")
 	{
 		print "Invalid session ID!\n";
 	}
-	# Exit with "config" error.
 	elsif($_[0] eq "config")
 	{
 		print "No configuration found in $config_file for \"$host\".\n";
@@ -199,17 +194,18 @@ sub response_message
 	# The request was successful.
 	if($_[0])
 	{
+		# Begin success message.
+		print "Status:\t\tSuccess\n";
+
 		# Print successful "POST" results.
 		if($_[1] eq "post")
 		{
-			print "Status:\t\tSuccess\n";
 			print "Session ID:\t" . decode_json($response->{'content'})->{'SessionID'} . "\n";
 			print "Payload:\t$post_data\n";
 		}
 		# Print successful "GET" results.
 		elsif($_[1] eq "get")
 		{
-			print "Status:\t\tSuccess\n";
 			print "Response:\t" . decode_json($response->{'content'})->{'Response'} . "\n";
 		}
 	}
@@ -217,16 +213,7 @@ sub response_message
 	else
 	{
 		# Print failed "POST" results.
-		if($_[1] eq "post")
-		{
-			print "Status:\tFailure\n";
-			print "Reason:\t" . $response->{'reason'} . "\n";
-		}
-		# Print failed "GET" results.
-		elsif($_[1] eq "get")
-		{
-			print "Status:\tFailure\n";
-			print "Reason:\t" . $response->{'reason'} . "\n";
-		}
+		print "Status:\tFailure\n";
+		print "Reason:\t" . $response->{'reason'} . "\n";
 	}
 }
