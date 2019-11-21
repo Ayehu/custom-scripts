@@ -4,12 +4,12 @@
 ---
 
 **Requirements:**
-* Perl
+* Perl (Ships with required libraries by default on all major Linux/UNIX/BSD distributions)
 * HTTP::Tiny (Perl library)
 * JSON (Perl library)
 * Getopt::Long (Perl library)
 
-<i>For Windows support, use the Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.
+<i>For Windows support, use the Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</i>
 
 **Usage:**
 <br>
