@@ -9,6 +9,8 @@
 * JSON (Perl library)
 * Getopt::Long (Perl library)
 
+<i>For Windows support, use the Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.
+
 **Usage:**
 <br>
 `ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
