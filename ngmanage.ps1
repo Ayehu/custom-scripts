@@ -42,6 +42,6 @@ elseif($mode -eq "start")
 # Print an error because no valid operation mode was given.
 else
 {
-    Write-Host "$mode is an invalid option."
+    Write-Host "Must provide a valid option."
     Write-Host "Usage: ngmanage <start/stop/restart>"
 }
