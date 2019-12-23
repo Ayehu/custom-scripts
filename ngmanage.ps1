@@ -43,5 +43,5 @@ elseif($mode -eq "start")
 else
 {
     Write-Host "Must provide a valid option."
-    Write-Host "Usage: ngmanage <start/stop/restart>"
+    Write-Host "Usage: ngmanage <start|stop|restart>"
 }
