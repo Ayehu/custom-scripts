@@ -1,5 +1,5 @@
 # ngmanage.ps1
-# Usage: ngmanage.ps1 <start/stop/restart>
+# Usage: ngmanage.ps1 <start|stop|restart>
 # 
 # Derek Pascarella <derekp@ayehu.com>
 # Ayehu, Inc.
