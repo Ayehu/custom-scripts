@@ -184,7 +184,7 @@ sub error_message
 	}
 	elsif($_[0] eq "host_missing")
 	{
-		print "Target host missing,\n";
+		print "Target host missing.\n";
 	}
 	elsif($_[0] eq "mode")
 	{
