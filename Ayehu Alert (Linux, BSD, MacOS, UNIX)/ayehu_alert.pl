@@ -5,7 +5,7 @@
 # Ayehu, Inc.
 #
 # Usage:
-# ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
+# ayehu_alert --host <LABEL> --mode <GET|POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"
 #
 # Configuration:
 # /etc/ayehu.conf
@@ -20,7 +20,7 @@ use Getopt::Long;
 use JSON;
 
 # Define usage help.
-my $usage = "Usage: ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 \"alert value 1\" alertKey2 \"alert value 2\"\n";
+my $usage = "Usage: ayehu_alert --host <LABEL> --mode <GET|POST> --sid <SESSION_ID> alertKey1 \"alert value 1\" alertKey2 \"alert value 2\"\n";
 
 # Define location of configuration file.
 my $config_file = "/etc/ayehu.conf";
