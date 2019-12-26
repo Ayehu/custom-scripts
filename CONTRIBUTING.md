@@ -9,11 +9,9 @@ Please read the following guidelines, which will maximize the chances for a fast
 
 1. Become an Ayehu Certified IT Automation Engineer! While it is not necessary to complete this step, we do recommend you to become a certified engineer. For more information please refer to the [Ayehu Automation Academy](https://ayehu.com/resources/ayehu-automation-academy%20-/).
 
-2. Write new scripts!
+2. Write new scripts in the language of your choice, like Python, PowerShell, Perl, Go, or whatever you prefer!
 
-3. Export your custom scripts! 
-
-4. You should now be ready to create a pull request!
+3. You should now be ready to create a pull request!
 
 ## Create a Pull Request on GitHub
 
