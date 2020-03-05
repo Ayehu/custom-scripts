@@ -9,7 +9,12 @@
 * JSON (Perl library)
 * Getopt::Long (Perl library)
 
-<i>For Windows support, use the Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</i>
+For Windows support, you have two options:
+<br>
+<ul>
+  <li>Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</li>
+  <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in "C:\ayehu.conf".</li>
+</ul>
 
 **Usage:**
 <br>
