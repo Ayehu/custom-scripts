@@ -15,11 +15,13 @@ For Windows support, you have two options:
   <li>Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</li>
   <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in "C:\ayehu.conf".</li>
 </ul>
-<br><br>
+
+
 **Usage:**
 <br>
 `ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
-<br><br>
+
+
 **Configuration (modify script to point to the location of your .conf file):**
 <br>
 `/etc/ayehu.conf`
@@ -39,7 +41,8 @@ The first step to utilizing this tool is creating a configuration file (by defau
 follows:
 <br>
 `HostLabel|TargetURL|Secret`
-<br><br>
+
+
 **Example:**
 <br>
 `MyAyehuServer|http://1.2.3.4:8888/AyehuAPI/|p@$$w0rd`
