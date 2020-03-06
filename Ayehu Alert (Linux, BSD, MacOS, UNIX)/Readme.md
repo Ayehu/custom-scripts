@@ -13,7 +13,7 @@ For Windows support, you have two options:
 <br>
 <ul>
   <li>Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</li>
-  <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in "C:\ayehu.conf".</li>
+  <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in `C:\ayehu.conf`.</li>
 </ul>
 
 
@@ -37,7 +37,7 @@ an external Linux/UNIX/BSD/MacOS system and an Ayehu NG server.
 If any parameter or argument is missing, invalid, or malformed, a detailed error will be returned. Should there be a
 problem sending a request, the response message will contain a reason for the failure.
 
-The first step to utilizing this tool is creating a configuration file (by default `/etc/ayehu.conf`). The format is as
+The first step to utilizing this tool is creating a configuration file (by default `/etc/ayehu.conf`, `C:\ayehu.conf` on Windows). The format is as
 follows:
 <br>
 `HostLabel|TargetURL|Secret`
