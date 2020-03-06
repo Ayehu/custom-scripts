@@ -13,7 +13,7 @@ For Windows support, you have two options:
 <br>
 <ul>
   <li>Strawberry Perl distribution (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>), which ships with all three required libraries by default.</li>
-  <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in "C:\ayehu.conf".</li>
+  <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in <code>C:\ayehu.conf</code>.</li>
 </ul>
 
 
