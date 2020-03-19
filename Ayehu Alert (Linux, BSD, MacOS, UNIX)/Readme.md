@@ -24,7 +24,7 @@ For Windows support, you have two options:
 
 **Configuration (modify script to point to the location of your .conf file):**
 <br>
-`/etc/ayehu.conf`
+`/etc/ayehu.conf` or `C:\ayehu.conf`
 
 This utility acts as a powerful and easy-to-use abstraction layer for the Ayehu NG Web Service API. This API allows data to
 be sent to an Ayehu NG server via HTTP POST requests. The API also supports GET requests for retrieving the response from a
