@@ -23,7 +23,7 @@ For Windows support, you have two options:
 
 ---
 **Configuration (modify script to point to the location of your .conf file):**
-<br>
+<br><br>
 `/etc/ayehu.conf` or `C:\ayehu.conf`
 
 This utility acts as a powerful and easy-to-use abstraction layer for the Ayehu NG Web Service API. This API allows data to
@@ -44,7 +44,7 @@ follows:
 
 ---
 **Using the Tool:**
-<br>
+<br><br>
 Below is an example of how the `ayehu.conf` file should be formatted (CustomLabel|EndpointURL|Password):
 <br>
 `MyAyehuServer|http://1.2.3.4:8888/AyehuAPI/|p@$$w0rd`
@@ -100,7 +100,7 @@ Response:       Wow Derek, you're 100 years old!
 ```
 ---
 **Further Reading:**
-<br>
+<br><br>
 For more information on building Ayehu NG workflows with WebServiceResponse activities for bi-directional communication
 between an external system and an Ayehu NG server, consult the documentation found in the Ayehu Support Portal:
 * [Integrating with Ayehu NG Web Services](https://support.ayehu.com/hc/en-us/articles/360014152193-Integrating-with-Ayehu-NG-Web-Services)
