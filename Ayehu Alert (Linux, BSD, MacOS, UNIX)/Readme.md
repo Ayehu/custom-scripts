@@ -43,7 +43,9 @@ follows:
 `HostLabel|TargetURL|Secret`
 
 
-**Example:**
+**Using the Tool:**
+<br>
+Below is an example of how the `ayehu.conf` file should be formatted (CustomLabel|EndpointURL|Password):
 <br>
 `MyAyehuServer|http://1.2.3.4:8888/AyehuAPI/|p@$$w0rd`
 
