@@ -42,13 +42,13 @@ follows:
 <br>
 `HostLabel|TargetURL|Secret`
 
----
-**Using the Tool:**
-<br><br>
 Below is an example of how the `ayehu.conf` file should be formatted (CustomLabel|EndpointURL|Password):
 <br>
 `MyAyehuServer|http://1.2.3.4:8888/AyehuAPI/|p@$$w0rd`
 
+---
+**Using the Tool:**
+<br><br>
 To send a POST request to an Ayehu NG server, a command like this would be executed:
 <br>
 `ayehu_alert --host MyAyehuServer --mode POST FirstName Derek`
