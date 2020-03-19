@@ -16,12 +16,12 @@ For Windows support, you have two options:
   <li>Use the stand-alone executable (ayehu_alert.exe) and store your configuration file in <code>C:\ayehu.conf</code>.</li>
 </ul>
 
-
+---
 **Usage:**
 <br>
 `ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
 
-
+---
 **Configuration (modify script to point to the location of your .conf file):**
 <br>
 `/etc/ayehu.conf` or `C:\ayehu.conf`
@@ -42,7 +42,7 @@ follows:
 <br>
 `HostLabel|TargetURL|Secret`
 
-
+---
 **Using the Tool:**
 <br>
 Below is an example of how the `ayehu.conf` file should be formatted (CustomLabel|EndpointURL|Password):
@@ -98,7 +98,7 @@ The response would resemble this:
 Status:         Success
 Response:       Wow Derek, you're 100 years old!
 ```
-
+---
 For more information on building Ayehu NG workflows with WebServiceResponse activities for bi-directional communication
 between an external system and an Ayehu NG server, consult the documentation found in the Ayehu Support Portal:
 * [Integrating with Ayehu NG Web Services](https://support.ayehu.com/hc/en-us/articles/360014152193-Integrating-with-Ayehu-NG-Web-Services)
