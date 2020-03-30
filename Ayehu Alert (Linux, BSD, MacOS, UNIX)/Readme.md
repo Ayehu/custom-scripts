@@ -17,15 +17,8 @@ For Windows support, you have two options:
 </ul>
 
 ---
-**Usage:**
+**About:**
 <br><br>
-`ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
-
----
-**Configuration (modify script to point to the location of your .conf file):**
-<br><br>
-`/etc/ayehu.conf` or `C:\ayehu.conf`
-
 This utility acts as a powerful and easy-to-use abstraction layer for the Ayehu NG Web Service API. This API allows data to
 be sent to an Ayehu NG server via HTTP POST requests. The API also supports GET requests for retrieving the response from a
 WebServiceResponse activity used in an Ayehu NG workflow.
@@ -36,6 +29,16 @@ an external Linux/UNIX/BSD/MacOS system and an Ayehu NG server.
 
 If any parameter or argument is missing, invalid, or malformed, a detailed error will be returned. Should there be a
 problem sending a request, the response message will contain a reason for the failure.
+
+---
+**Usage:**
+<br><br>
+`ayehu_alert --host <LABEL> --mode <GET/POST> --sid <SESSION_ID> alertKey1 "alert value 1" alertKey2 "alert value 2"`
+
+---
+**Configuration (modify script to point to the location of your .conf file):**
+<br><br>
+`/etc/ayehu.conf` or `C:\ayehu.conf`
 
 The first step to utilizing this tool is creating a configuration file (by default `/etc/ayehu.conf`, `C:\ayehu.conf` on Windows). The format is as
 follows:
