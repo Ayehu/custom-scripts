@@ -4,6 +4,7 @@
 
 ---
 **Requirements:**
+For Linux, UNIX, BSD, and MacOS:
 * Perl (Ships with required libraries by default on all major Linux/UNIX/BSD distributions)
 * HTTP::Tiny (Perl library)
 * JSON (Perl library)
