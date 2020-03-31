@@ -8,7 +8,7 @@
 For Linux, UNIX, BSD, and MacOS:
 <br>
 <ul>
-  <li>Perl (Ships with required libraries by default on all major Linux/UNIX/BSD distributions)</li>
+  <li>Perl (Ships with the required libraries below by default)</li>
   <li>HTTP::Tiny (Perl library)</li>
   <li>JSON (Perl library)</li>
   <li>Getopt::Long (Perl library)</li>
