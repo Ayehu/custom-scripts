@@ -4,11 +4,15 @@
 
 ---
 **Requirements:**
+<br><br>
 For Linux, UNIX, BSD, and MacOS:
-* Perl (Ships with required libraries by default on all major Linux/UNIX/BSD distributions)
-* HTTP::Tiny (Perl library)
-* JSON (Perl library)
-* Getopt::Long (Perl library)
+<br>
+<ul>
+  <li>Perl (Ships with required libraries by default on all major Linux/UNIX/BSD distributions)</li>
+  <li>HTTP::Tiny (Perl library)</li>
+  <li>JSON (Perl library)</li>
+  <li>Getopt::Long (Perl library)</li>
+</ul>
 
 For Windows support, you have two options:
 <br>
