@@ -19,18 +19,15 @@ my $workflow_destination = $ARGV[1];
 # Print error messages for missing input or other errors.
 if(!defined $workflow_source || $workflow_source eq "")
 {
-	die "Error: Must specify source and destination files.\n";
-	print "Usage: minimize_workflow <source_file> <destination_file>\n";
+	die "Error: Must specify source and destination files.\nUsage: minimize_workflow <source_file> <destination_file>\n";
 }
 elsif(!defined $workflow_destination || $workflow_destination eq "")
 {
-	die "Error: Must specify source and destination files.\n";
-	print "Usage: minimize_workflow <source_file> <destination_file>\n";
+	die "Error: Must specify source and destination files.\nUsage: minimize_workflow <source_file> <destination_file>\n";
 }
 elsif(!-e $workflow_source)
 {
-	die "Error: Source file is unreadable or does not exist.\n";
-	print "Usage: minimize_workflow <source_file> <destination_file>\n";
+	die "Error: Source file is unreadable or does not exist.\nUsage: minimize_workflow <source_file> <destination_file>\n";
 }
 
 # Open source workflow.
